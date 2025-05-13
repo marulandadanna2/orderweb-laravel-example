@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Observation extends Model
 {
     use HasFactory;
-     protected $table = "observation";
+     protected $table = "observation";  
+     protected $fillable = [
+        'description'
+        
+    ];
 }
