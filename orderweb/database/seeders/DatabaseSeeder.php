@@ -40,12 +40,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Technician::factory(1)->create([
-            'speaciality' => 'Lectura de redes'
+            'speciality' => 'Lectura de redes'
         ]);
 
         Technician::factory(1)->create();
            
-            $this->call(ActivitySeeder::class);
+        $this->call(ActivitySeeder::class);
+        //seeders de prueba 
+        //$this->call(TestTechnicianSeeder::class);
+        $this->call(TestTechnicianSeeder::class);
+
+        
+
 
         
     }

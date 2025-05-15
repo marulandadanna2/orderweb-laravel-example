@@ -13,4 +13,9 @@ class Observation extends Model
         'description'
         
     ];
+    
+     public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

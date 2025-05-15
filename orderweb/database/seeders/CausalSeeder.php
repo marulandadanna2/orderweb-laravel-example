@@ -18,7 +18,7 @@ class CausalSeeder extends Seeder
         [ 'description'=> 'SUSPENCION DEEL SERVICIO'],
         [ 'description'=> 'RECONEXION DEL SERVICIO'],
         [ 'description'=> 'INSTALACION DEL CONTADOR '],
-        [ 'description'=> 'CAMBIO DEL CONTADOR'],
+        [ 'description'=> 'CAMBIO DEL CONTADOR']
 
         ]);
     }
