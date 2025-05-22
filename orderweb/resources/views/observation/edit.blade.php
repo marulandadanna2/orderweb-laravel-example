@@ -4,12 +4,14 @@
 @section('content')
      <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="" method="POST">
+            <form action="{{ route('observation.update' , $observation['id']) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
-                        <label for="description">Fecha</label>
-                        <input type="text" class="form-control" name="description" id="description" required>
+                        <label for="description">Descripcion</label>
+                        <input type="text" class="form-control" name="description" id="description" required
+                        value="{{ $observation['description'] }}">
                     </div>
                 </div>
                 <div class="row">
@@ -17,7 +19,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                     </div>
                     <div class="col-lg-6">
-                        <a href="{{ route('observation.edit') }}" class="btn btn-secondary btn-block">Cancelar</a>
+                        <a href="{{ route('observation.index') }}" class="btn btn-secondary btn-block">Cancelar</a>
                     </div>
                 </div>
             </form>

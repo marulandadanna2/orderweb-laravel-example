@@ -1,19 +1,17 @@
 @extends('templates.base')
-@section('title', 'Crear tecnico')
-@section('header', 'Crear tecnico')
+@section('title', 'Editar tipo actividad')
+@section('header', 'Editar tipo actividad')
 @section('content')
      <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="" method="POST">
+            <form action="{{ route('type_activity.update' , $typeActivity['id']) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
-                        <label for="document">Documento</label>
-                        <input type="number" class="form-control" name="document" id="document" required>
-                    </div>
-                    <div class="col-lg-12 mb-4">
-                        <label for="name">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" required>
+                        <label for="description">Descripcion</label>
+                        <input type="text" class="form-control" name="description" id="description" required
+                        value="{{ $typeActivity['description'] }}">
                     </div>
                 </div>
                 <div class="row">
@@ -21,7 +19,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                     </div>
                     <div class="col-lg-6">
-                        <a href="{{ route('causal.index') }}" class="btn btn-secondary btn-block">Cancelar</a>
+                        <a href="{{ route('type_activity.index') }}" class="btn btn-secondary btn-block">Cancelar</a>
                     </div>
                 </div>
             </form>
