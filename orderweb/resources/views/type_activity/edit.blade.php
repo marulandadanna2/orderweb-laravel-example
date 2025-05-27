@@ -1,17 +1,17 @@
 @extends('templates.base')
-@section('title', 'Editar tipo actividad')
-@section('header', 'Editar tipo actividad')
+@section('title', 'Editar tipo de actividad')
+@section('header', 'Editar tipo de actividad')
 @section('content')
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="{{ route('type_activity.update' , $typeActivity['id']) }}" method="POST">
+            <form action="{{ route('type_activity.update', $type['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
-                        <label for="description">Descripcion</label>
-                        <input type="text" class="form-control" name="description" id="description" required
-                        value="{{ $typeActivity['description'] }}">
+                        <label for="description">Descripción</label>
+                        <input type="text" class="form-control" name="description" id="description" required 
+                        value="{{ $type['description'] }}">
                     </div>
                 </div>
                 <div class="row">
@@ -24,6 +24,6 @@
                 </div>
             </form>
         </div>
-     </div>
+    </div>
 
 @endsection

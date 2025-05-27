@@ -11,9 +11,9 @@ class TypeActivityController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-     {
-     $type_activities = TypeActivity::all();
-        return view('type_activity.index', compact('type_activities'));
+    {
+        $types = TypeActivity::all();
+        return view('type_activity.index', compact('types'));
     }
 
     /**
@@ -29,10 +29,9 @@ class TypeActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //  dd($request);
-      $typeActivity = TypeActivity::create($request->all());
-      session()->flash('message', 'Tipo de actividad creado exitosamente');
-      return redirect()->route('type_activity.index');
+        $type = TypeActivity::create($request->all());
+        session()->flash('message', 'Registro creado exitosamente');
+        return redirect()->route('type_activity.index');
     }
 
     /**
@@ -48,16 +47,16 @@ class TypeActivityController extends Controller
      */
     public function edit(string $id)
     {
-         $typeActivity = TypeActivity::find($id);
-        if($typeActivity)//La causal existe
+        $type = TypeActivity::find($id);
+        if($type) 
         {
-            return view('type_activity.edit', compact('typeActivity'));
+            return view('type_activity.edit', compact('type'));
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
+            session()->flash('warning', 'No se encuentra el registro solicitado');
             return redirect()->route('type_activity.index');
-        }
+        }  
     }
 
     /**
@@ -65,16 +64,17 @@ class TypeActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $typeActivity = TypeActivity::find($id);
-        if($typeActivity)//El tipo de actividad existe
+        $type = TypeActivity::find($id);
+        if($type) 
         {
-           $typeActivity->update($request->all());
-           session()->flash('message','Tipo de actividad actualizado exitosamente');
+            $type->update($request->all());
+            session()->flash('message', 'Registro actualizado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
-        }
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
         return redirect()->route('type_activity.index');
     }
 
@@ -83,17 +83,17 @@ class TypeActivityController extends Controller
      */
     public function destroy(string $id)
     {
-        $typeActivity = TypeActivity::find($id);
-        if($typeActivity)//El tipo de catividad existe
+        $type = TypeActivity::find($id);
+        if($type) 
         {
-            $typeActivity->delete();
-            session()->flash('message', 'Tipo de actividad eliminado exitosamente');
+            $type->delete();
+            session()->flash('message', 'Registro eliminado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
-            
-        }
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
         return redirect()->route('type_activity.index');
     }
 }

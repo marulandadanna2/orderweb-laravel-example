@@ -1,14 +1,14 @@
 @extends('templates.base')
-@section('title', 'Crear observacion')
-@section('header', 'Crear Observacion')
+@section('title', 'Crear observación')
+@section('header', 'Crear observación')
 @section('content')
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12 mb-4">
             <form action="{{ route('observation.store') }}" method="POST">
                 @csrf
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
-                        <label for="description">Descripcion
+                        <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description" required>
                     </div>
                 </div>
@@ -22,6 +22,6 @@
                 </div>
             </form>
         </div>
-     </div>
+    </div>
 
 @endsection

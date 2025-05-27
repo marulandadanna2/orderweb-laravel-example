@@ -1,50 +1,50 @@
 @extends('templates.base')
-@section('title', 'Crear orden ')
-@section('header', 'Crear orden')
+@section('title', 'Crear órdenes')
+@section('header', 'Crear órdenes')
 @section('content')
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="{{ route('activity.store') }}" method="POST">
+            <form action="{{ route('order.store') }}" method="POST">
                 @csrf
                 <div class="row form-group">
-                    <div class="col-lg-12 mb-4">
-                        <label for="date">Fecha</label>
-                        <input type="date" class="form-control" name="date" id="date" required>
+                    <div class="col-lg-6 mb-4">
+                        <label for="legalization_date">Fecha legalización</label>
+                        <input type="date" class="form-control" name="legalization_date" id="legalization_date" required>
                     </div>
                     <div class="col-lg-6 mb-4">
-                        <label for="address">Direccion</label>
+                        <label for="address">Dirección</label>
                         <input type="text" class="form-control" name="address" id="address" required>
                     </div>
                 </div>
                 <div class="row form-group">
-                    <div class="coll-lg-6 mb-4">
+                    <div class="col-lg-4 mb-4">
                         <label for="city">Ciudad</label>
-                       <select name="city" id="city" class="form-control">
-                            <option value="">TULUA</option>
-                            <option value="">CALI</option>
-                            <option value="">BUGA</option>
-                            <option value="">PALMIRA</option>
+                        <select name="city" id="city" class="form-control" required>
+                            <option value="TULUA">TULUA</option>
+                            <option value="CALI">CALI</option>
+                            <option value="BUGA">BUGA</option>
+                            <option value="PALMIRA">PALMIRA</option>
                         </select>
-                    </div>      
-                    <div class="col-lg-6 mb-4">
+                    </div>
+                    <div class="col-lg-4 mb-4">
                         <label for="causal_id">Causal</label>
-                        <select name="causal_id" id="causal_id" class="form-control">
+                        <select name="causal_id" id="causal_id" class="form-control" required>
                             <option value="">Seleccione</option>
-                            @foreach ($causals as $causal )
-                            <option value="{{ $causal['id'] }}">{{ $causal['description'] }}</option>                                
-                            @endforeach
-                        </select>
-                    </div>    
-                    <div class="col-lg-6 mb-4">
-                        <label for="observation_id">Observacion</label>
-                        <select name="observation_id" id="observation_id" class="form-control">
-                            <option value="">Seleccione</option>
-                             @foreach ($observations as $observation )
-                            <option value="{{ $observation['id'] }}">{{ $observation['description'] }}</option>                                
+                            @foreach ($causals as $causal)
+                                <option value="{{ $causal['id'] }}">{{ $causal['description'] }}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>    
+                    <div class="col-lg-4 mb-4">
+                        <label for="observation_id">Observación</label>
+                        <select name="observation_id" id="observation_id" class="form-control">
+                            <option value="">Seleccione</option>
+                             @foreach ($observations as $observation)
+                                <option value="{{ $observation['id'] }}">{{ $observation['description'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <button type="submit" class="btn btn-primary btn-block">Guardar</button>
@@ -55,15 +55,18 @@
                 </div>
             </form>
 
+            <br>
+
             <div class="row">
                 <div class="col-lg-12 mb-4">
                     <div class="alert alert-warning" role="alert">
-                        <i class="fa-solid fa-lightbuld"></i> Para añadir actividades a la orden, primero debe crearla y luego dar click
-                        en la accion editar.
+                        <i class="fa-solid fa-lightbuld"></i> Para añadir actividades a la orden, primero debe
+                        crearla y luego dar clic en la acción Editar.
                     </div>
                 </div>
             </div>
+
         </div>
-     </div>
+    </div>
 
 @endsection

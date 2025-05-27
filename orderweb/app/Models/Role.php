@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     protected $table = "role";
-     protected $fillable = [
+    protected $fillable = [
         'name'
     ];
 
@@ -18,4 +18,5 @@ class Role extends Model
     {
         return $this->hasMany(User::class);
     }
+
 }

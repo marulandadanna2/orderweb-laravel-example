@@ -14,7 +14,6 @@ class CausalController extends Controller
     {
         $causals = Causal::all();
         return view('causal.index', compact('causals'));
-
     }
 
     /**
@@ -30,10 +29,10 @@ class CausalController extends Controller
      */
     public function store(Request $request)
     {
-      //  dd($request);
-      $causal = Causal::create($request->all());
-      session()->flash('message', 'Registro creado exitosamente');
-      return redirect()->route('causal.index');
+        //dd($request);
+        $causal = Causal::create($request->all());
+        session()->flash('message', 'Registro creado exitosamente');
+        return redirect()->route('causal.index');
     }
 
     /**
@@ -50,7 +49,7 @@ class CausalController extends Controller
     public function edit(string $id)
     {
         $causal = Causal::find($id);
-        if($causal)//La causal existe
+        if($causal) //la causal existe
         {
             return view('causal.edit', compact('causal'));
         }
@@ -58,8 +57,7 @@ class CausalController extends Controller
         {
             session()->flash('warning', 'No se encuentra el registro solicitado');
             return redirect()->route('causal.index');
-        }
-      
+        }        
     }
 
     /**
@@ -68,15 +66,16 @@ class CausalController extends Controller
     public function update(Request $request, string $id)
     {
         $causal = Causal::find($id);
-        if($causal)//La causal existe
+        if($causal) //la causal existe
         {
-           $causal->update($request->all());
-           session()->flash('message','Registro actualizado exitosamente');
+            $causal->update($request->all());
+            session()->flash('message', 'Registro actualizado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-        }
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
         return redirect()->route('causal.index');
     }
 
@@ -86,16 +85,16 @@ class CausalController extends Controller
     public function destroy(string $id)
     {
         $causal = Causal::find($id);
-        if($causal)//La causal existe
+        if($causal) //la causal existe
         {
             $causal->delete();
             session()->flash('message', 'Registro eliminado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el registro solicitado');
-            
-        }
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
         return redirect()->route('causal.index');
     }
 }

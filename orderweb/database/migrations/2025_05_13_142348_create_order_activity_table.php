@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('order_activity', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('order')
-                  ->onDelete('cascade')->onUpdate('cascade');
+                    ->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('activity_id')->constrained('activity')
-                  ->onDelete('cascade')->onUpdate('cascade');    
-            $table->unique(['order_id', 'activity_id']);      
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->unique(['order_id', 'activity_id']);        
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

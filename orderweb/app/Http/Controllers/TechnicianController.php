@@ -12,7 +12,7 @@ class TechnicianController extends Controller
      */
     public function index()
     {
-     $technicans = Technician::all();
+        $technicians = Technician::all();
         return view('technician.index', compact('technicians'));
     }
 
@@ -29,10 +29,9 @@ class TechnicianController extends Controller
      */
     public function store(Request $request)
     {
-        //  dd($request);
-      $technician = Technician::create($request->all());
-      session()->flash('message', 'Tecnico creado exitosamente');
-      return redirect()->route('technician.index');
+        $technician = Technician::create($request->all());
+        session()->flash('message', 'Registro creado exitosamente');
+        return redirect()->route('technician.index');
     }
 
     /**
@@ -48,17 +47,16 @@ class TechnicianController extends Controller
      */
     public function edit(string $id)
     {
-         $technician = Technician::find($id);
-        if($technician)//La causal existe
+        $technician = Technician::find($id);
+        if($technician) 
         {
             return view('technician.edit', compact('technician'));
         }
         else
-
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
+            session()->flash('warning', 'No se encuentra el registro solicitado');
             return redirect()->route('technician.index');
-        }
+        }  
     }
 
     /**
@@ -66,17 +64,18 @@ class TechnicianController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $typeActivity = TypeActivity::find($id);
-        if($typeActivity)//El tipo de actividad existe
+        $technician = Technician::find($id);
+        if($technician) 
         {
-           $typeActivity->update($request->all());
-           session()->flash('message','Tipo de actividad actualizado exitosamente');
+            $technician->update($request->all());
+            session()->flash('message', 'Registro actualizado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
-        }
-        return redirect()->route('type_activity.index');
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
+        return redirect()->route('technician.index');
     }
 
     /**
@@ -84,17 +83,17 @@ class TechnicianController extends Controller
      */
     public function destroy(string $id)
     {
-        $typeActivity = TypeActivity::find($id);
-        if($typeActivity)//El tipo de catividad existe
+        $technician = Technician::find($id);
+        if($technician) 
         {
-            $typeActivity->delete();
-            session()->flash('message', 'Tipo de actividad eliminado exitosamente');
+            $technician->delete();
+            session()->flash('message', 'Registro eliminado exitosamente');
         }
         else
         {
-            session()->flash('warning', 'No se encuentra el tipo de actividad solicitado');
-            
-        }
-        return redirect()->route('type_activity.index');
+            session()->flash('warning', 'No se encuentra el registro solicitado');            
+        } 
+
+        return redirect()->route('technician.index');
     }
 }

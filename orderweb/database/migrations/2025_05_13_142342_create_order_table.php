@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->date('legalization_date')->comment('fecha legalizacion');
-            $table->string('address', 50)->comment('direccion');
+            $table->date('legalization_date')->comment('fecha legalización');
+            $table->string('address', 50)->comment('dirección');
             $table->string('city', 80)->comment('ciudad');
             $table->foreignId('causal_id')->constrained('causal')
                     ->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('observation_id')->nullable()
                     ->constrained('observation')
-                    ->onDelete('cascade')->onUpdate('cascade');
+                    ->onDelete('cascade')->onUpdate('cascade');        
             $table->timestamps();
         });
     }

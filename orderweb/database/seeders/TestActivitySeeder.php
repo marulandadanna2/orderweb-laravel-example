@@ -15,11 +15,10 @@ class TestActivitySeeder extends Seeder
      */
     public function run(): void
     {
-        
         $activity = new Activity();
         $activity->description = "Actividad de prueba 3";
         $activity->hours = 2;
-//FKs
+        //FKs
         $technician = Technician::where('document', 1116222333)->first();
         $activity->technician_id = $technician->id;
 
@@ -27,6 +26,5 @@ class TestActivitySeeder extends Seeder
         $activity->type_activity_id = $type_activity->id;
 
         $activity->save();
-
     }
 }

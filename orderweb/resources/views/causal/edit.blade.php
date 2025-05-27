@@ -2,16 +2,16 @@
 @section('title', 'Editar causal')
 @section('header', 'Editar causal')
 @section('content')
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12 mb-4">
             <form action="{{ route('causal.update', $causal['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-12 mb-4">
-                        <label for="description">Descripcion</label>
+                        <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description" required
-                        value="{{ $causal['description'] }}">
+                         value="{{ $causal['description'] }}">
                     </div>
                 </div>
                 <div class="row">
@@ -24,6 +24,6 @@
                 </div>
             </form>
         </div>
-     </div>
+    </div>
 
 @endsection

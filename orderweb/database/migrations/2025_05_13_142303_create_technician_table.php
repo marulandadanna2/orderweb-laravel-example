@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_activity', function (Blueprint $table) {
+        Schema::create('technician', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 100)->comment('description');
+            $table->unsignedBigInteger('document')->unique()->comment('cédula');
+            $table->string('name', 80)->comment('nombre');
+            $table->string('speciality', 50)->nullable()->comment('especialidad');
+            $table->string('phone', 30)->nullable()->comment('teléfono');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('type_activity');
+        Schema::dropIfExists('technician');
     }
 };

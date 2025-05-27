@@ -9,18 +9,17 @@
 </head>
 <body>
     <div id="container">
-        @include('templates/banner') 
-
+        @include('templates_example/banner')
         <div>
             <aside>
-                @include('templates/menu')
+                @include('templates_example/menu')
             </aside>
-            <!-- aqui se insertar las paginas que heredan de base-->
+            <!-- aqui se insertan las paginas que heredan de base -->
             <section>
                 @yield('content')
             </section>
             <br>
-            @include('templates/footer')
+            @include('templates_example/footer')
         </div>
     </div>
 

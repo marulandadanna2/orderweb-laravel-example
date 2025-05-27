@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\TypeActivity;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Seeder;
 
 class TypeActivitySeeder extends Seeder
@@ -14,12 +13,11 @@ class TypeActivitySeeder extends Seeder
      */
     public function run(): void
     {
-       TypeActivity::insert([
-        ['description' => 'REPARACION'],
-        ['description' => 'CONSTRUCCION'],
-        ['description' => 'INSTALACION'],
-        ['description' => 'SUSPENCION']
-
-       ]);
+        TypeActivity::insert([
+            ['description' => 'REPARACION'],
+            ['description' => 'CONSTRUCCION'],
+            ['description' => 'INSTALACION'],
+            ['description' => 'SUSPENSION']
+        ]);
     }
 }

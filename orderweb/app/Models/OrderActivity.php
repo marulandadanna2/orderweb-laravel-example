@@ -9,7 +9,7 @@ class OrderActivity extends Model
 {
     use HasFactory;
     protected $table = 'order_activity';
-     protected $fillable = [
+    protected $fillable = [
         'order_id',
         'activity_id'
     ];
@@ -23,9 +23,4 @@ class OrderActivity extends Model
     {
         return $this->belongsTo(Activity::class, 'activity_id');
     }
-
-
-
-    
-
 }
