@@ -2,6 +2,7 @@
 @section('title', 'Editar observación')
 @section('header', 'Editar observación')
 @section('content')
+
     <div class="row">
         <div class="col-lg-12 mb-4">
             <form action="{{ route('observation.update', $observation['id']) }}" method="POST">
