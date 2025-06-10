@@ -40,7 +40,7 @@
 
     @yield('content')
 
-    <footer id="version_text">
+    <footer id="version-text">
         <p>Generado por OrderWeb 1.0</p>
     </footer>
 
