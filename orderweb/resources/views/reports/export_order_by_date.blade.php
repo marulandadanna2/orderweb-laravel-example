@@ -1,24 +1,26 @@
 @extends('templates.base_reports')
-@section('header', 'Reporte fechas por tecnico')
+@section('header', 'Reporte actividades por tecnico')
 @section('content')
     <section id="results">  
-        @if (count($activities) != 0)
+        @if (count($orders) != 0)
             <h4>Tecnico:</h4>
             <table id="reportTable">
                 <thead>
                     <tr>
-                    <th>Documento</th>
-                    <th>Nombre</th>
-                    <th>Especialidad</th>
-                    <th>Telefono</th>
+                    <th>Fecha legalizacion</th>
+                    <th>Direccion</th>
+                    <th>Ciudad</th>
+                    <th>Causal</th>
+                    <th>Observacion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td>{{ $activities[0]->technician->document }}</td>
-                    <td>{{ $activities[0]->technician->name }}</td>
-                    <td>{{ $activities[0]->technician->speciality }}</td>
-                    <td>{{ $activities[0]->technician->phone }}</td>
+                    <td>{{ $orders['legalization_date'] }}</td>
+                    <td>{{ $orders['address']}}</td>
+                    <td>{{ $orders['city']}}</td>
+                    <td>{{ $orders->causal->observation }}</td>
+                    <td>{{ $orders->observation->observation }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -27,10 +29,10 @@
 
             <table id="reportTable">
                 <thead>
-                    <th>Id</th>
-                    <th>Descripcion</th>
-                    <th>Horas</th>
-                    <th>Tipo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </thead>
                 <tbody>
                     @foreach ($activities as $activity)

@@ -107,8 +107,16 @@ Route::middleware(['auth','can:administrador'])->prefix('reports')->group(functi
 
 Route::middleware(['auth','can:administrador'])->prefix('reports')->group(function(){
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
-    Route::get('/export_technicians', [ReportController::class, 'export_technicians'])->name('reports.activities_technicians');
-    Route::post('/export_activities_by_technicians', [ObservationController::class, 'export_activities_by_technicians'])
-    ->name('reports.activities_technicians');
+    Route::get('/export_technicians', [ReportController::class, 'export_technicians'])->name('reports.technicians');
+    Route::post('/export_activities_by_technician', [ReportController::class, 'export_activities_by_technician'])
+    ->name('reports.activities_technician');
+
+});
+
+Route::middleware(['auth','can:administrador'])->prefix('reports')->group(function(){
+    Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/export_technicians', [ReportController::class, 'export_technicians'])->name('reports.technicians');
+    Route::post('/export_order_by_date', [ReportController::class, 'export_order_by_date'])
+    ->name('reports.orders_date');
 
 });
