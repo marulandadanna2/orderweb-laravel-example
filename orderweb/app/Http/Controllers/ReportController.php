@@ -53,16 +53,20 @@ class ReportController extends Controller
         return $pdf->download('ActivitiesByTechnician-'.$request['technician_id'].'.pdf');
     }
 
-    public function export_order_by_date(Request $request)
+   public function export_order_by_date(Request $request)
     {
-        $orders = Order::where('order_id', $request['ordre_id'])->get();
+        $orders = Order::whereBetween('legalization_date', [$request['start_date'], $request['end_date']])->get();
         $data = array(
-            'orders'=> $orders
+            'orders' => $orders,
+            'start_date' => $request['start_date'],
+            'end_date' => $request['end_date']
         );
 
-        $pdf = Pdf::loadView('reports.export_order_by_date', $data)->setPaper('letter', 'portrait')
-        ->setOptions(['defaulFont'=>'sans-serif','isRemoteEnabled'=>true]);
-
-        return $pdf->download('OrderByDate-'.$request['technician_id'].'.pdf');
+        $pdf = Pdf::loadView('reports.export_order_by_date', $data)
+        ->setPaper('letter', 'portrait')
+        ->setOptions([
+            'defaultFont'=>'sans-serif',
+            'isRemoteEnabled'=>true]);
+        return $pdf->download('OrderByDate-'.$request['start_date'].'a'.$request['end_date'].'.pdf');
     }
 }
